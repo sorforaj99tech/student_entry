@@ -1,0 +1,52 @@
+{% extends 'common_code/base.html' %}
+ 
+{% block content %}
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">user  Name</th>
+        <th scope="col">subject</th>
+        <th scope="col">age</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in data %}
+      <tr>
+        
+        <th scope="row">{{ i.id }}</th>
+        <td>{{ i.username  }}</td>
+        <td>
+          {% if i.subject == 'science' %}
+          CSE
+          {% elif i.subject == 'arts' %}
+          MBA
+          {% elif i.subject == 'commerce' %}
+          BBA
+          {% elif i.subject == 'vocational' %}
+          BA
+          {% else %}
+          Noun
+          {% endif %}
+        </td>
+
+        <td>
+          {% if i.age < 18 %}
+          Minor
+          {% elif i.age  >= 18 and i.age <= 40 %}
+          Adult
+          {% else %}
+          Oldman
+          {% endif %}
+        </td>
+
+        
+      </tr>
+      {% endfor %}
+    </tbody>
+
+    <a href="{% url 'home' %}">Back to signup</a>
+  </table>
+
+{% endblock content %}
